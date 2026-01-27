@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: mdp_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: mdp
+      POSTGRES_USER: felipe
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U felipe"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  pgdata:
+
+# /mnt/c/Codigo/e-commerce_basico/src/main/java/com/mdp/config
+# docker exec -it mdp_postgres psql -U felipe -d postgres -c "DROP DATABASE IF EXISTS mdp;"

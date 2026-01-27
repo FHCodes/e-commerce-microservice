@@ -1,0 +1,30 @@
+#RESTART DO CONTAINER
+docker restart mdp_postgres
+
+#CONECTAR NO BANCO DENTRO DO CONTAINER
+docker exec -it mdp_postgres psql -U felipe -d mdp
+
+#LISTAR TABELAS - DENTRO DO PROMPT DO PSQL, PARA LISTAR TODAS AS TABELAS DO SCHEMA PADRÃO (PUBLIC):
+\dt
+
+#EXCLUIR TODOS OS DADOS - PARA DELETAR OS DADOS DE TODAS AS TABELAS SEM APAGAR AS TABELAS EM SI, EXECUTE:
+DO
+$$
+DECLARE
+    r RECORD;
+BEGIN
+    -- Desativa restrições temporariamente
+    EXECUTE 'SET session_replication_role = replica';
+
+    -- Itera por todas as tabelas do schema public
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'TRUNCATE TABLE public.' || quote_ident(r.tablename) || ' CASCADE';
+    END LOOP;
+
+    -- Reativa as restrições
+    EXECUTE 'SET session_replication_role = DEFAULT';
+END;
+$$;
+
+#DROPAR TODAS AS TABELAS MANUALMENTE
+DROP TABLE address, customer, order_item, orders, products, seller, users CASCADE;
