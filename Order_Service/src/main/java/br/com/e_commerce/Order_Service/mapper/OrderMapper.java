@@ -1,9 +1,9 @@
-package com.mdp.mapper;
+package br.com.e_commerce.order_service.mapper;
 
-import com.mdp.dto.response.OrderItemResponseDTO;
-import com.mdp.dto.response.OrderResponseDTO;
-import com.mdp.entity.order.Order;
-import com.mdp.entity.order.OrderItem;
+import br.com.e_commerce.order_service.dto.response.OrderItemResponseDTO;
+import br.com.e_commerce.order_service.dto.response.OrderResponseDTO;
+import br.com.e_commerce.order_service.entity.Order;
+import br.com.e_commerce.order_service.entity.OrderItem;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class OrderMapper {
     public static OrderItemResponseDTO toOrderItemResponseDTO(OrderItem item) {
         return new OrderItemResponseDTO(
                 item.getId(),
-                item.getProduct().getName(),
-                item.getProduct().getPrice(),
+                item.getProductCache().getName(),
+                item.getProductCache().getCurrentPrice(),
                 item.getQuantity(),
                 item.getSubTotItem()
         );

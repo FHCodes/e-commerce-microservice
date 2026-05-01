@@ -1,16 +1,16 @@
-
-docker run --name postgres-order \
--e POSTGRES_DB=order \
+#CRIAR CONTAINER COM AS CONF NECESSARIAS DO BANCO(SPRING VAI GERAR AS TABELAS COM HIBERNATE)
+docker run --name postgres-register \
+-e POSTGRES_DB=user \
 -e POSTGRES_USER=felipe \
 -e POSTGRES_PASSWORD=1234 \
--p 5434:5432 \
+-p 5432:5432 \
 -d postgres:16
 
 #RESTART DO CONTAINER
-docker restart postgres-order
+docker restart mdp_register_user
 
 #CONECTAR NO BANCO DENTRO DO CONTAINER
-docker exec -it mdp_postgres psql -U felipe -d mdp
+docker exec -it mdp_register_user psql -U felipe -d mdp
 
 #LISTAR TABELAS - DENTRO DO PROMPT DO PSQL, PARA LISTAR TODAS AS TABELAS DO SCHEMA PADRÃO (PUBLIC):
 \dt

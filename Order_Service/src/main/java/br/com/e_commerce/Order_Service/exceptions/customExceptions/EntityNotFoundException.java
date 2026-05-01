@@ -1,4 +1,4 @@
-package com.mdp.exceptions.customExceptions;
+package br.com.e_commerce.order_service.exceptions.customExceptions;
 
 public class EntityNotFoundException extends RuntimeException {
     public EntityNotFoundException(String message) {

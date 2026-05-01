@@ -1,6 +1,7 @@
-package com.mdp.repository;
+package br.com.e_commerce.order_service.repository;
 
-import com.mdp.entity.order.OrderItem;
+
+import br.com.e_commerce.order_service.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

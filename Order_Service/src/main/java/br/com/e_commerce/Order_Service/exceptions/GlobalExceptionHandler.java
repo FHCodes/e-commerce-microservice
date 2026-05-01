@@ -1,7 +1,7 @@
-package com.mdp.exceptions;
+package br.com.e_commerce.order_service.exceptions;
 
-import com.mdp.exceptions.customExceptions.CustomerOrderAccessException;
-import com.mdp.exceptions.customExceptions.EntityNotFoundException;
+import br.com.e_commerce.order_service.exceptions.customExceptions.CustomerOrderAccessException;
+import br.com.e_commerce.order_service.exceptions.customExceptions.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

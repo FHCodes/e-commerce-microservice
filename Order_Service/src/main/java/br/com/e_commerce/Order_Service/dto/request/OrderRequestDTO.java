@@ -1,4 +1,4 @@
-package com.mdp.dto.request;
+package br.com.e_commerce.order_service.dto.request;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;

@@ -1,4 +1,4 @@
-package br.com.e_commerce.Order_Service;
+package br.com.e_commerce.order_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

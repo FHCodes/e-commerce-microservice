@@ -1,4 +1,4 @@
-package com.mdp.enums;
+package br.com.e_commerce.order_service.enums;
 
 public enum OrderStatus {
     CREATED,

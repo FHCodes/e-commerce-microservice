@@ -1,6 +1,6 @@
-package com.mdp.dto.response;
+package br.com.e_commerce.order_service.dto.response;
 
-import com.mdp.enums.OrderStatus;
+import br.com.e_commerce.order_service.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

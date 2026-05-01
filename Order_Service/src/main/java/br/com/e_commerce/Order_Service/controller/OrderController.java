@@ -1,11 +1,10 @@
-package com.mdp.controller;
+package br.com.e_commerce.order_service.controller;
 
-import com.mdp.dto.request.CustomerRequestDTO;
-import com.mdp.dto.request.OrderRequestDTO;
-import com.mdp.dto.response.OrderItemResponseDTO;
-import com.mdp.dto.response.OrderResponseDTO;
-import com.mdp.entity.order.Order;
-import com.mdp.service.OrderService;
+import br.com.e_commerce.order_service.dto.request.OrderRequestDTO;
+import br.com.e_commerce.order_service.dto.response.OrderItemResponseDTO;
+import br.com.e_commerce.order_service.dto.response.OrderResponseDTO;
+import br.com.e_commerce.order_service.entity.Order;
+import br.com.e_commerce.order_service.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +31,8 @@ public class OrderController {
         return ResponseEntity.ok(orderService.allOrdersByCustomer(custumerId));
     }
 
-    @GetMapping("/{custumerId}/{orderId}")
-    public ResponseEntity<List<OrderItemResponseDTO>> allItemsByOrder(@Valid @PathVariable Long custumerId, @PathVariable Long orderId){
-        return ResponseEntity.ok(orderService.allItemsByOrder(custumerId,orderId));
-    }
+//    @GetMapping("/{custumerId}/{orderId}")
+//    public ResponseEntity<List<OrderItemResponseDTO>> allItemsByOrder(@Valid @PathVariable Long custumerId, @PathVariable Long orderId){
+//        return ResponseEntity.ok(orderService.allItemsByOrder(custumerId,orderId));
+//    }
 }

@@ -1,4 +1,4 @@
-package com.mdp.dto.response;
+package br.com.e_commerce.order_service.dto.response;
 
 import java.math.BigDecimal;
 
