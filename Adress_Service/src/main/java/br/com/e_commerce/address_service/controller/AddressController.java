@@ -1,9 +1,10 @@
-package br.com.e_commerce.adress_service.controller;
+package br.com.e_commerce.address_service.controller;
 
-import br.com.e_commerce.adress_service.dto.request.AddressRequestDTO;
-import br.com.e_commerce.adress_service.dto.response.AddressResponseDTO;
-import br.com.e_commerce.adress_service.service.AddressService;
+import br.com.e_commerce.address_service.dto.request.AddressRequestDTO;
+import br.com.e_commerce.address_service.dto.response.AddressResponseDTO;
+import br.com.e_commerce.address_service.service.AddressService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +17,13 @@ public class AddressController {
 
     private final AddressService addressService;
 
-    // ✅ MODIFICADO: injeção por construtor
+    // Injeção por construtor
     public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 
-    /**
-     * Retorna todos os endereços de um cliente
-     */
+
+    //Retorna todos os endereços de um cliente
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<List<AddressResponseDTO>> getAllCustomerAddresses(
             @PathVariable Long customerId
@@ -33,9 +33,7 @@ public class AddressController {
         );
     }
 
-    /**
-     * Cria um novo endereço para um cliente
-     */
+    //Cria um novo endereço para um cliente
     @PostMapping("/customer/{customerId}")
     public ResponseEntity<Void> registerAddress(@Valid @RequestBody AddressRequestDTO dto,
                                                 @PathVariable Long customerId
@@ -67,6 +65,12 @@ public class AddressController {
             @PathVariable Long customerId
     ) {
         addressService.deleteAddress(addressId, customerId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/delete/{customerId}")
+    public ResponseEntity<Void>  deleteAllAddress(@PathVariable @Positive Long customerId) {
+        addressService.deleteAllAddress(customerId);
         return ResponseEntity.noContent().build();
     }
 }

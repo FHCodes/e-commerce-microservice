@@ -1,4 +1,4 @@
-package br.com.e_commerce.adress_service.dto.response;
+package br.com.e_commerce.address_service.dto.response;
 
 public record AddressResponseDTO(
         Long id,

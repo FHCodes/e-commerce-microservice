@@ -1,4 +1,4 @@
-package br.com.e_commerce.adress_service.dto.request;
+package br.com.e_commerce.address_service.dto.request;
 
 import jakarta.validation.constraints.*;
 

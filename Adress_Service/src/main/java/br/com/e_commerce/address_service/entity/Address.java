@@ -1,6 +1,6 @@
-package br.com.e_commerce.adress_service.entity;
+package br.com.e_commerce.address_service.entity;
 
-import br.com.e_commerce.adress_service.dto.request.AddressRequestDTO;
+import br.com.e_commerce.address_service.dto.request.AddressRequestDTO;
 import jakarta.persistence.*;
 
 @Entity(name = "ADDRESS")

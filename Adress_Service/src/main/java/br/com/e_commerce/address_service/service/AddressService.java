@@ -1,11 +1,12 @@
-package br.com.e_commerce.adress_service.service;
+package br.com.e_commerce.address_service.service;
 
-import br.com.e_commerce.adress_service.dto.request.AddressRequestDTO;
-import br.com.e_commerce.adress_service.dto.response.AddressResponseDTO;
-import br.com.e_commerce.adress_service.entity.Address;
-import br.com.e_commerce.adress_service.exceptions.customExceptions.EntityNotFoundException;
-import br.com.e_commerce.adress_service.mapper.AddressMapper;
-import br.com.e_commerce.adress_service.repository.AddressRepository;
+import br.com.e_commerce.address_service.dto.request.AddressRequestDTO;
+import br.com.e_commerce.address_service.dto.response.AddressResponseDTO;
+import br.com.e_commerce.address_service.entity.Address;
+import br.com.e_commerce.address_service.exceptions.customExceptions.EntityNotFoundException;
+import br.com.e_commerce.address_service.integration.CustomerValidationGateway;
+import br.com.e_commerce.address_service.mapper.AddressMapper;
+import br.com.e_commerce.address_service.repository.AddressRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +17,11 @@ import java.util.List;
 public class AddressService {
 
     private final AddressRepository addressRepository;
+    private final CustomerValidationGateway customerValidationGateway;
 
-    public AddressService(AddressRepository addressRepository) {
+    public AddressService(AddressRepository addressRepository, CustomerValidationGateway customerValidationGateway) {
         this.addressRepository = addressRepository;
+        this.customerValidationGateway = customerValidationGateway;
     }
 
     /**
@@ -124,16 +127,30 @@ public class AddressService {
         addressRepository.delete(address);
     }
 
+    //Deleta todos os endereços do cliente
+    public void deleteAllAddress(Long customerId) {
+        validateCustomerId(customerId);
+        addressRepository.deleteAllAddressByCustomerId(customerId);
+    }
+
     // ============================
     // MÉTODOS AUXILIARES
     // ============================
 
-    // ✅ NOVO: validações centralizadas
+    // ✅ Validações centralizadas
     private void validateCustomerId(Long customerId) {
         if (customerId == null) {
             throw new EntityNotFoundException("Customer id must not be null");
         }
+
+        if (customerId <= 0) {
+            throw new IllegalArgumentException("customerId must be greater than zero");
+        }
+
+        // ✅ AQUI o Feign é usado (indiretamente)
+        customerValidationGateway.validateCustomerExists(customerId);
     }
+
 
     // ✅ NOVO: evita repetição de código
     private void updateIfPresent(String value, java.util.function.Consumer<String> setter) {

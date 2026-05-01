@@ -1,4 +1,4 @@
-package br.com.e_commerce.address_service.client;
+package br.com.e_commerce.address_service.integration;
 
 
 import br.com.e_commerce.address_service.exceptions.customExceptions.EntityNotFoundException;

@@ -1,7 +1,7 @@
-package br.com.e_commerce.adress_service.mapper;
+package br.com.e_commerce.address_service.mapper;
 
-import br.com.e_commerce.adress_service.dto.response.AddressResponseDTO;
-import br.com.e_commerce.adress_service.entity.Address;
+import br.com.e_commerce.address_service.dto.response.AddressResponseDTO;
+import br.com.e_commerce.address_service.entity.Address;
 
 import java.util.List;
 

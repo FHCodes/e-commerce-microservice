@@ -1,6 +1,6 @@
-package br.com.e_commerce.adress_service.exceptions;
+package br.com.e_commerce.address_service.exceptions;
 
-import br.com.e_commerce.adress_service.exceptions.customExceptions.EntityNotFoundException;
+import br.com.e_commerce.address_service.exceptions.customExceptions.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

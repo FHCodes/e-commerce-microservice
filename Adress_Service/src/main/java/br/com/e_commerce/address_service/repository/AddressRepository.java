@@ -1,6 +1,6 @@
-package br.com.e_commerce.adress_service.repository;
+package br.com.e_commerce.address_service.repository;
 
-import br.com.e_commerce.adress_service.entity.Address;
+import br.com.e_commerce.address_service.entity.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +20,7 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
     @Transactional
     @Query("UPDATE ADDRESS a SET a.currentAddress = false WHERE a.customerId = :customerId")
     void deactivateCustomerAddresses(@Param("customerId") Long customerId);
+
+    void deleteAllAddressByCustomerId(Long customerId);
 }
 
