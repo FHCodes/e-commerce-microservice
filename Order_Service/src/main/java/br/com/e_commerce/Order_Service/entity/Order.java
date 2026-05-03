@@ -24,6 +24,7 @@ public class Order {
 
     private BigDecimal total;
 
+    @Column(name = "customerId", nullable = false)
     private Long customerId;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

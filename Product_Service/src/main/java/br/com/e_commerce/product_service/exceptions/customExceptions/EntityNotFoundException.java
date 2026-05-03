@@ -1,0 +1,8 @@
+package br.com.e_commerce.product_service.exceptions.customExceptions;
+
+public class EntityNotFoundException extends RuntimeException {
+    public EntityNotFoundException(String message) {
+        super(message);
+    }
+}
+

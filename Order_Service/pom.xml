@@ -12,7 +12,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>br.com.order-mdp</groupId>
+	<groupId>br.com.e_commerce.order_service</groupId>
 	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>order-service</name>

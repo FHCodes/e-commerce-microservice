@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "products_cache") // Nome para diferenciar da tabela principal de produtos
+@Table(name = "PRODUCTS_CACHE") // Nome para diferenciar da tabela principal de produtos
 public class ProductCache {
 
     @Id
